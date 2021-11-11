@@ -13,9 +13,10 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"syscall"
 
-	"github.com/floostack/transcoder"
-	"github.com/floostack/transcoder/utils"
+	"github.com/lyaf/transcoder"
+	"github.com/lyaf/transcoder/utils"
 )
 
 // Transcoder ...

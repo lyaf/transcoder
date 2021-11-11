@@ -34,7 +34,7 @@
 ## Download from Github
 
 ```shell
-go get github.com/floostack/transcoder
+go get github.com/lyaf/transcoder
 ```
 
 ## Example
@@ -45,7 +45,7 @@ package main
 import (
 	"log"
 
-	ffmpeg "github.com/floostack/transcoder/ffmpeg"
+	ffmpeg "github.com/lyaf/transcoder/ffmpeg"
 )
 
 func main() {
