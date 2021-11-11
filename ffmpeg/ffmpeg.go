@@ -93,7 +93,7 @@ func (t *Transcoder) Start(opts transcoder.Options) (<-chan transcoder.Progress,
 	} else {
 		cmd = exec.CommandContext(*t.commandContext, t.config.FfmpegBinPath, args...)
 	}
-
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	// If progresss enabled, get stderr pipe and start progress process
 	if t.config.ProgressEnabled && !t.config.Verbose {
 		stderrIn, err = cmd.StderrPipe()
