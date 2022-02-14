@@ -94,7 +94,7 @@ func (t *Transcoder) Start(opts transcoder.Options) (<-chan transcoder.Progress,
 	} else {
 		cmd = exec.CommandContext(*t.commandContext, t.config.FfmpegBinPath, args...)
 	}
-	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true, CreationFlags: 0x08000000}
+	cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	// If progresss enabled, get stderr pipe and start progress process
 	if t.config.ProgressEnabled && !t.config.Verbose {
 		stderrIn, err = cmd.StderrPipe()
@@ -225,6 +225,7 @@ func (t *Transcoder) GetMetadata() (transcoder.Metadata, error) {
 		args := []string{"-i", input, "-print_format", "json", "-show_format", "-show_streams", "-show_error"}
 
 		cmd := exec.Command(t.config.FfprobeBinPath, args...)
+		cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 		cmd.Stdout = &outb
 		cmd.Stderr = &errb
 
